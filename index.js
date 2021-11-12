@@ -22,6 +22,7 @@ async function run() {
         const dronesInfo = database.collection("droneInfo")
         const ordersInfo = database.collection("ordersInfo")
         const usersInfo = database.collection("usersInfo")
+        const reviewInfo = database.collection("reviewInfo")
 
         app.get("/drone", async (req, res) => {
             const query = dronesInfo.find({})
@@ -129,6 +130,18 @@ async function run() {
             }
             console.log({ admin: isAdmin })
             res.json({ admin: isAdmin })
+        })
+
+        app.get("/review", async (req, res) => {
+            const query = reviewInfo.find({})
+            const result = await query.toArray()
+            res.json(result)
+        })
+
+        app.post("/review", async (req, res) => {
+            const info = req.body
+            const result = await reviewInfo.insertOne(info)
+            res.json(result)
         })
 
     }
