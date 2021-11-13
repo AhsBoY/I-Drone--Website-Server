@@ -128,7 +128,7 @@ async function run() {
             if (user?.role === "Admin") {
                 isAdmin = true
             }
-            console.log({ admin: isAdmin })
+            // console.log({ admin: isAdmin })
             res.json({ admin: isAdmin })
         })
 
