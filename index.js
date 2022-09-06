@@ -4,7 +4,7 @@ require("dotenv").config()
 const { MongoClient } = require('mongodb');
 const ObjectId = require("mongodb").ObjectId
 
-
+//codee
 const port = process.env.PORT || 5000
 const app = express()
 
@@ -27,7 +27,7 @@ async function run() {
         app.get("/drone", async (req, res) => {
             const query = dronesInfo.find({})
             const result = await query.toArray()
-            // console.log(result)
+            console.log(result)
             res.json(result)
         })
         app.get("/drone/:id", async (req, res) => {
